@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
+        <title>Theadlines</title>
+        <link href="bootstrap.min.css" rel="stylesheet">
+    </head>
+    <body class="container">
+        <div>
+            <p id="logo">Theadlines</p>
+            <p class="text-uppercase text-muted" id="slogan">Daily news headlines</p>
+        </div>
+        <ul class="nav nav-tabs justify-content-center">
+            <li class="nav-item">
+              <a class="nav-link active" data-toggle="tab" href="#xlocal">Local</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" data-toggle="tab" href="#xworld">World</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-toggle="tab" href="#xsports">Sports</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-toggle="tab" href="#xtech">Tech</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-toggle="tab" href="#xentertainment">Entertainment</a>
+            </li>
+           
+        </ul>
+        <section id="myTabContent" class="tab-content">
+            <div class="tab-pane fade active show" id="xlocal">
+                <div id="local" class="card-columns"></div>
+            </div>
+            <div class="tab-pane fade" id="xworld">
+                <div id="world" class="card-columns"></div>
+            </div>
+            <div class="tab-pane fade" id="xsports">
+                <div id="sports" class="card-columns"></div>
+            </div>
+            <div class="tab-pane fade" id="xtech">
+                <div id="tech"  class="card-columns"></div>
+            </div>
+            <div class="tab-pane fade" id="xentertainment">
+                <div id="entertainment" class="card-columns"></div>
+            </div>
+        </section>
+    </body>
+    <footer>
+        <p class="text-uppercase text-muted">API by <a href="https://newsapi.org/" target="_blank"><strong>Newsapi</strong><a></p>
+    </footer>
+</html>
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;500;600;700;800&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Bokor&display=swap');
+    
+    * {
+        font-family: 'Open Sans', sans-serif;
+    }
+
+    a {
+        color: inherit;
+    }
+
+    #logo {
+        font-family: 'Bokor', cursive !important;
+        font-size: 80px;
+        text-align: center;
+        padding: 20px 0px 0px 0px;
+    }
+
+    #slogan {
+        word-spacing: 2px;
+        letter-spacing: 1px;
+        font-size: small;
+        text-align: center;
+        margin-top: -30px;
+        padding-bottom: 50px;
+    }
+
+    section {
+        padding: 30px 0px;
+        border-radius: 4px !important;
+    }
+
+    footer {
+        padding: 60px 0px 60px 0px;
+        word-spacing: 2px;
+        letter-spacing: 1px;
+        text-align: right;
+        text-decoration: dashed;
+        font-size: x-small;
+        
+    }
+
+    .btn {
+        border-radius: 3px !important;
+        font-size: small;
+    }
+
+
+    ul {
+        font-size: small;
+    }
+
+    .card-title {
+        line-height: 1.1;
+    }
+
+    .card-text {
+        line-height: 1.4;
+    }
+
+
+    /* Media Query for Mobile Devices */
+    @media (max-width: 480px) {
+        #logo {
+            font-size: 70px;
+        }
+    }
+    
+
+   
+</style>
+
+<script src="jquery.slim.min.js"></script>
+<script src="bootstrap.bundle.min.js"></script>
+<script src="axios.min.js"></script>
+
+<script>
+
+const local = document.querySelector("#local");
+const world = document.querySelector("#world");
+const sports = document.querySelector("#sports");
+const tech = document.querySelector("#tech");
+const entertainment = document.querySelector("#entertainment");
+
+const getLocal = () => {
+     
+    axios.get('https://sheets.googleapis.com/v4/spreadsheets/10_2nCVxzXoBqib0XC1e_Vq_1QzQd8AkKzoUyQghlPwQ/values/local?alt=json&key=AIzaSyBB2U41C_ckf_BvHZ3k4un6K4hpmEB0tJU')
+    .then(res => {
+        let lnews = res.data['values'];
+        for(x=1; x<lnews.length; x++){
+            
+            let showlx = document.createElement("div");
+            showlx.innerHTML += `      
+            <div class="card mb-3" style="">
+                <img src="${lnews[x][8]}" class="card-img-top" alt="${lnews[x][8]}" id="cimage"/>
+                <div class="card-body">
+                    <h5 class="card-title"><b>${lnews[x][5]}</b></h5>
+                    <p class="card-text">${lnews[x][6]}....</p>
+                    <a href="${lnews[x][7]}" class="btn btn-primary" target="_blank"><strong>Read More</strong></a>
+                </div>
+            </div>
+            </br>
+            `
+           // showlx.setAttribute("class", "col-md-4");
+
+            local.appendChild(showlx);
+        }
+    })
+    .catch(err => console.error(err));
+
+}
+
+const getWorld = () => {
+    axios.get('https://sheets.googleapis.com/v4/spreadsheets/10_2nCVxzXoBqib0XC1e_Vq_1QzQd8AkKzoUyQghlPwQ/values/world?alt=json&key=AIzaSyBB2U41C_ckf_BvHZ3k4un6K4hpmEB0tJU')
+    .then(res => {
+        let lnews = res.data['values'];
+        for(x=1; x<lnews.length; x++){
+            
+            let showlx = document.createElement("div");
+            showlx.innerHTML += `      
+            <div class="card mb-3" style="">
+                <img src="${lnews[x][8]}" class="card-img-top" alt="${lnews[x][8]}" id="cimage"/>
+                <div class="card-body">
+                    <h5 class="card-title"><b>${lnews[x][5]}</b></h5>
+                    <p class="card-text">${lnews[x][6]}....</p>
+                    <a href="${lnews[x][7]}" class="btn btn-primary" target="_blank"><strong>Read More</strong></a>
+                </div>
+            </div>
+            </br>
+            `
+           // showlx.setAttribute("class", "col-md-4");
+
+            world.appendChild(showlx);
+        }
+    })
+    .catch(err => console.error(err));
+}
+
+const getSports = () => {
+    axios.get('https://sheets.googleapis.com/v4/spreadsheets/10_2nCVxzXoBqib0XC1e_Vq_1QzQd8AkKzoUyQghlPwQ/values/sports?alt=json&key=AIzaSyBB2U41C_ckf_BvHZ3k4un6K4hpmEB0tJU')
+    .then(res => {
+        let lnews = res.data['values'];
+        for(x=1; x<lnews.length; x++){
+            
+            let showlx = document.createElement("div");
+            showlx.innerHTML += `      
+            <div class="card mb-3" style="">
+                <img src="${lnews[x][8]}" class="card-img-top" alt="${lnews[x][8]}" id="cimage"/>
+                <div class="card-body">
+                    <h5 class="card-title"><b>${lnews[x][5]}</b></h5>
+                    <p class="card-text">${lnews[x][6]}....</p>
+                    <a href="${lnews[x][7]}" class="btn btn-primary" target="_blank"><strong>Read More</strong></a>
+                </div>
+            </div>
+            </br>
+            `
+           // showlx.setAttribute("class", "col-md-4");
+
+            sports.appendChild(showlx);
+        }
+    })
+    .catch(err => console.error(err));
+}
+
+const getTech = () => {
+    axios.get('https://sheets.googleapis.com/v4/spreadsheets/10_2nCVxzXoBqib0XC1e_Vq_1QzQd8AkKzoUyQghlPwQ/values/tech?alt=json&key=AIzaSyBB2U41C_ckf_BvHZ3k4un6K4hpmEB0tJU')
+    .then(res => {
+        let lnews = res.data['values'];
+        for(x=1; x<lnews.length; x++){
+            
+            let showlx = document.createElement("div");
+            showlx.innerHTML += `      
+            <div class="card mb-3" style="">
+                <img src="${lnews[x][8]}" class="card-img-top" alt="${lnews[x][8]}" id="cimage"/>
+                <div class="card-body">
+                    <h5 class="card-title"><b>${lnews[x][5]}</b></h5>
+                    <p class="card-text">${lnews[x][6]}....</p>
+                    <a href="${lnews[x][7]}" class="btn btn-primary" target="_blank"><strong>Read More</strong></a>
+                </div>
+            </div>
+            </br>
+            `
+           // showlx.setAttribute("class", "col-md-4");
+
+            tech.appendChild(showlx);
+        }
+    })
+    .catch(err => console.error(err));
+}
+
+const getEntertainment = () => {
+    axios.get('https://sheets.googleapis.com/v4/spreadsheets/10_2nCVxzXoBqib0XC1e_Vq_1QzQd8AkKzoUyQghlPwQ/values/entertainment?alt=json&key=AIzaSyBB2U41C_ckf_BvHZ3k4un6K4hpmEB0tJU')
+    .then(res => {
+        let lnews = res.data['values'];
+        for(x=1; x<lnews.length; x++){
+            
+            let showlx = document.createElement("div");
+            showlx.innerHTML += `      
+            <div class="card mb-3" style="">
+                <img src="${lnews[x][8]}" class="card-img-top" alt="${lnews[x][8]}" id="cimage"/>
+                <div class="card-body">
+                    <h5 class="card-title"><b>${lnews[x][5]}</b></h5>
+                    <p class="card-text">${lnews[x][6]}....</p>
+                    <a href="${lnews[x][7]}" class="btn btn-primary" target="_blank"><strong>Read More</strong></a>
+                </div>
+            </div>
+            </br>
+            `
+           // showlx.setAttribute("class", "col-md-4");
+
+            entertainment.appendChild(showlx);
+        }
+    })
+    .catch(err => console.error(err));
+    
+}
+
+getLocal();
+getWorld();
+getSports();
+getTech();
+getEntertainment();
+
+//setInterval(getNews, 14,400,000)
+
+
+
+
+
+/**
+http://api.mediastack.com/v1/news?access_key=54272ec9b070bca7a531b644e27cbd7e&countries=ng&limit=24
+http://api.mediastack.com/v1/news?access_key=54272ec9b070bca7a531b644e27cbd7e&sources=en&keywords=football&limit=24
+http://api.mediastack.com/v1/news?access_key=54272ec9b070bca7a531b644e27cbd7e&sources=en&keywords=world news&limit=24
+http://api.mediastack.com/v1/news?access_key=54272ec9b070bca7a531b644e27cbd7e&sources=en&keywords=viral news&limit=24
+http://api.mediastack.com/v1/news?access_key=54272ec9b070bca7a531b644e27cbd7e&categories=technology&limit=24
+
+https://spreadsheets.google.com/feeds/cells/10_2nCVxzXoBqib0XC1e_Vq_1QzQd8AkKzoUyQghlPwQ/1/public/full?alt=json
+
+https://sheets.googleapis.com/v4/spreadsheets/10_2nCVxzXoBqib0XC1e_Vq_1QzQd8AkKzoUyQghlPwQ/values/local?alt=json&key=AIzaSyBB2U41C_ckf_BvHZ3k4un6K4hpmEB0tJU
+
+
+https://newsapi.org/v2/top-headlines?country=ng&apiKey=b3d5590765a749c3b4bc05966c61ec42
+https://newsapi.org/v2/top-headlines?q=world news?language=en&apiKey=b3d5590765a749c3b4bc05966c61ec42
+https://newsapi.org/v2/top-headlines?category=technology&apiKey=b3d5590765a749c3b4bc05966c61ec42
+https://newsapi.org/v2/top-headlines?q=football?language=en&apiKey=b3d5590765a749c3b4bc05966c61ec42
+https://newsapi.org/v2/top-headlines?q=viral news?language=en&apiKey=b3d5590765a749c3b4bc05966c61ec42
+**/
+
+</script>
