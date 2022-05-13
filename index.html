@@ -199,7 +199,7 @@ const getWorld = () => {
     .catch(err => console.error(err));
 }
 
-getWorld();
+
     
 const getSports = () => {
     axios.get('https://sheets.googleapis.com/v4/spreadsheets/10_2nCVxzXoBqib0XC1e_Vq_1QzQd8AkKzoUyQghlPwQ/values/sports?alt=json&key=AIzaSyBB2U41C_ckf_BvHZ3k4un6K4hpmEB0tJU')
@@ -227,7 +227,7 @@ const getSports = () => {
     .catch(err => console.error(err));
 }
 
-getSports();
+
 
 const getTech = () => {
     axios.get('https://sheets.googleapis.com/v4/spreadsheets/10_2nCVxzXoBqib0XC1e_Vq_1QzQd8AkKzoUyQghlPwQ/values/tech?alt=json&key=AIzaSyBB2U41C_ckf_BvHZ3k4un6K4hpmEB0tJU')
@@ -255,7 +255,7 @@ const getTech = () => {
     .catch(err => console.error(err));
 }
 
-getTech();
+
 
 const getEntertainment = () => {
     axios.get('https://sheets.googleapis.com/v4/spreadsheets/10_2nCVxzXoBqib0XC1e_Vq_1QzQd8AkKzoUyQghlPwQ/values/entertainment?alt=json&key=AIzaSyBB2U41C_ckf_BvHZ3k4un6K4hpmEB0tJU')
@@ -284,11 +284,13 @@ const getEntertainment = () => {
     
 }
 
-
-
-
-
+getLocal();
+getWorld();
+getSports();
+getTech();
 getEntertainment();
+
+
 
 //setInterval(getNews, 14,400,000)
 
