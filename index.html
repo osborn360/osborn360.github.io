@@ -142,9 +142,9 @@ const sports = document.querySelector("#sports");
 const tech = document.querySelector("#tech");
 const entertainment = document.querySelector("#entertainment");
 
-const getLocal = () => {
+const getLocal = async () => {
      
-    axios.get('https://sheets.googleapis.com/v4/spreadsheets/10_2nCVxzXoBqib0XC1e_Vq_1QzQd8AkKzoUyQghlPwQ/values/local?alt=json&key=AIzaSyBB2U41C_ckf_BvHZ3k4un6K4hpmEB0tJU')
+   await axios.get('https://sheets.googleapis.com/v4/spreadsheets/10_2nCVxzXoBqib0XC1e_Vq_1QzQd8AkKzoUyQghlPwQ/values/local?alt=json&key=AIzaSyBB2U41C_ckf_BvHZ3k4un6K4hpmEB0tJU')
     .then(res => {
         let lnews = res.data['values'];
         for(x=1; x<lnews.length; x++){
@@ -170,11 +170,11 @@ const getLocal = () => {
 
 }
 
-getLocal();
 
 
-const getWorld = () => {
-    axios.get('https://sheets.googleapis.com/v4/spreadsheets/10_2nCVxzXoBqib0XC1e_Vq_1QzQd8AkKzoUyQghlPwQ/values/world?alt=json&key=AIzaSyBB2U41C_ckf_BvHZ3k4un6K4hpmEB0tJU')
+
+const getWorld = async () => {
+    await axios.get('https://sheets.googleapis.com/v4/spreadsheets/10_2nCVxzXoBqib0XC1e_Vq_1QzQd8AkKzoUyQghlPwQ/values/world?alt=json&key=AIzaSyBB2U41C_ckf_BvHZ3k4un6K4hpmEB0tJU')
     .then(res => {
         let lnews = res.data['values'];
         for(x=1; x<lnews.length; x++){
@@ -201,8 +201,8 @@ const getWorld = () => {
 
 
     
-const getSports = () => {
-    axios.get('https://sheets.googleapis.com/v4/spreadsheets/10_2nCVxzXoBqib0XC1e_Vq_1QzQd8AkKzoUyQghlPwQ/values/sports?alt=json&key=AIzaSyBB2U41C_ckf_BvHZ3k4un6K4hpmEB0tJU')
+const getSports = async () => {
+    await axios.get('https://sheets.googleapis.com/v4/spreadsheets/10_2nCVxzXoBqib0XC1e_Vq_1QzQd8AkKzoUyQghlPwQ/values/sports?alt=json&key=AIzaSyBB2U41C_ckf_BvHZ3k4un6K4hpmEB0tJU')
     .then(res => {
         let lnews = res.data['values'];
         for(x=1; x<lnews.length; x++){
@@ -229,8 +229,8 @@ const getSports = () => {
 
 
 
-const getTech = () => {
-    axios.get('https://sheets.googleapis.com/v4/spreadsheets/10_2nCVxzXoBqib0XC1e_Vq_1QzQd8AkKzoUyQghlPwQ/values/tech?alt=json&key=AIzaSyBB2U41C_ckf_BvHZ3k4un6K4hpmEB0tJU')
+const getTech = async () => {
+   await axios.get('https://sheets.googleapis.com/v4/spreadsheets/10_2nCVxzXoBqib0XC1e_Vq_1QzQd8AkKzoUyQghlPwQ/values/tech?alt=json&key=AIzaSyBB2U41C_ckf_BvHZ3k4un6K4hpmEB0tJU')
     .then(res => {
         let lnews = res.data['values'];
         for(x=1; x<lnews.length; x++){
@@ -257,8 +257,8 @@ const getTech = () => {
 
 
 
-const getEntertainment = () => {
-    axios.get('https://sheets.googleapis.com/v4/spreadsheets/10_2nCVxzXoBqib0XC1e_Vq_1QzQd8AkKzoUyQghlPwQ/values/entertainment?alt=json&key=AIzaSyBB2U41C_ckf_BvHZ3k4un6K4hpmEB0tJU')
+const getEntertainment = async () => {
+    await axios.get('https://sheets.googleapis.com/v4/spreadsheets/10_2nCVxzXoBqib0XC1e_Vq_1QzQd8AkKzoUyQghlPwQ/values/entertainment?alt=json&key=AIzaSyBB2U41C_ckf_BvHZ3k4un6K4hpmEB0tJU')
     .then(res => {
         let lnews = res.data['values'];
         for(x=1; x<lnews.length; x++){
