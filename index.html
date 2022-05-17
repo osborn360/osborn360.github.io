@@ -293,18 +293,17 @@ const getEntertainment = async () => {
 
 getLocal();
 
-getWorld();
-getSports();
-getTech();
-getEntertainment();
-
-
-/**
+const letsCheck = () => {
 let xcheck = document.querySelector("#check");
-if(xcheck === null) {
+if(xcheck !== null) {
+   getWorld();
+   getSports();
+   getTech();
+   getEntertainment(); 
+   }else{
     window.location.reload();
-   }
- **/
+}
+}
    
     
  
@@ -313,7 +312,7 @@ if(xcheck === null) {
 
 
 
-//setInterval(getNews, 14,400,000)
+setInterval(letsCheck, 1000);
 
 
 </script>
