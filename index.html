@@ -293,7 +293,7 @@ const getEntertainment = async () => {
 
 getLocal();
 
-windows.onload = (e) => {
+window.onload = () => {
 let xcheck = document.querySelector("#check");
 if(xcheck !== null) {
    getWorld();
@@ -301,7 +301,7 @@ if(xcheck !== null) {
    getTech();
    getEntertainment(); 
    }else{
-    window.location.reload(true);
+    window.location.reload();
 }
 }
  
