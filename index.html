@@ -294,6 +294,7 @@ const getEntertainment = async () => {
 getLocal();
 
 window.onload = () => {
+const letscheck = () => {
 let xcheck = document.querySelector("#check");
 if(xcheck !== null) {
    getWorld();
@@ -304,7 +305,10 @@ if(xcheck !== null) {
     window.location.reload();
 }
 }
- 
+
+setInterval(letscheck, 2000);
+}
+
 
 
 </script>
