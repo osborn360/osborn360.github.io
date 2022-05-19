@@ -293,7 +293,7 @@ const getEntertainment = async () => {
 
 getLocal();
 
-const letsCheck = () => {
+windows.onload = () => {
 let xcheck = document.querySelector("#check");
 if(xcheck !== null) {
    getWorld();
@@ -301,18 +301,10 @@ if(xcheck !== null) {
    getTech();
    getEntertainment(); 
    }else{
-    document.location.reload();
+    window.location.reload();
 }
 }
-   
-    
  
-
-
-
-
-
-setInterval(letsCheck, 3000);
 
 
 </script>
