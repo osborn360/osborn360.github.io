@@ -292,23 +292,22 @@ const getEntertainment = async () => {
 }
 
 getLocal();
+getWorld();
+getSports();
+getTech();
+getEntertainment(); 
 
-///window.addEventListener('load', () => {
+
 const letscheck = () => {
 let xcheck = document.querySelector("#check");
-if(xcheck !== null) {
-   getWorld();
-   getSports();
-   getTech();
-   getEntertainment(); 
-   }else{
+if(xcheck == null) {
     window.location.reload();
 }
 
-
 setTimeout(letscheck, 3000);
-    }
-//});
+}
+
+
 
 
 </script>
