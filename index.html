@@ -294,7 +294,7 @@ const getEntertainment = async () => {
 getLocal();
 
 window.addEventListener('load', () => {
-
+const letscheck = () => {
 let xcheck = document.querySelector("#check");
 if(xcheck !== null) {
    getWorld();
@@ -306,7 +306,8 @@ if(xcheck !== null) {
 }
 
 
-// setInterval(letscheck, 2000);
+setTimeout(letscheck, 3000);
+    }
 });
 
 
