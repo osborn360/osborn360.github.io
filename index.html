@@ -300,17 +300,13 @@ getTech();
 getEntertainment(); 
 
 
-const letscheck = () => {
-let xcheck = document.querySelector("#check");
-if(xcheck == null) {
+window.addEventListener('load', () => {
+  let xcheck = document.querySelector("#check");
+  if(xcheck == null) {
     window.location.reload();
-}
-}
-
-setTimeout(letscheck, 2000);
-
-
-
+  }
+//setTimeout(letscheck, 2000);
+});
 
 
 </script>
